@@ -40,7 +40,7 @@ def process_file(filepath):
     return parts_b64
 
 def populate_template(filename,data):
-    template = '''<button id="downloadButton">Download</button><script>document.getElementById('downloadButton').addEventListener('click', () => { b1 = "{{part1}}";b2 = "{{part2}}";b3 = "{{part3}}";b4 = "{{part4}}";b5 = "{{part5}}";combinedData = atob(b1) + atob(b2) + atob(b3) + atob(b4) + atob(b5);blob = new Blob([combinedData], { type: "text/plain" });link = document.createElement("a");link.download = "{{filename}}"; link.href = URL.createObjectURL(blob);document.body.appendChild(link);link.click();document.body.removeChild(link);});</script>'''
+    template = '''<button id="downloadButton">Download</button><script>document.getElementById('downloadButton').addEventListener('click', () => { b1 = "{{part1}}";b2 = "{{part2}}";b3 = "{{part3}}";b4 = "{{part4}}";b5 = "{{part5}}";combinedData = atob(b1) + atob(b2) + atob(b3) + atob(b4) + atob(b5);bytes=new Uint8Array(combinedData.length);for (var i = 0;i<combinedData.length;i++){bytes[i]=combinedData.charCodeAt(i)};blob = new Blob([bytes.buffer], { type: "octet/stream" });link = document.createElement("a");link.download = "{{filename}}"; link.href = URL.createObjectURL(blob);document.body.appendChild(link);link.click();document.body.removeChild(link);});</script>'''
     for i in range(5):
         template = template.replace('{{part%s}}'%(str(i+1)),data[i].decode('utf-8'))
     template = template.replace('{{filename}}',filename)
