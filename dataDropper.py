@@ -60,7 +60,7 @@ if __name__ == '__main__':
         if len(browser_payload) < 2084:
             print(f'\n\n\t{prettier_print.OKGREEN}Your payload:{prettier_print.ENDC} \n\n{browser_payload}\n\n')
         else:
-            print(f'\n\n\tPayload {prettier_print.WARNING}too large{prettier_print.ENDC} to print, saving to {prettier_print.OKGREEN}payload.txt{prettier_print.ENDC}\n\n')
+            print(f'\n\n\tPayload {prettier_print.WARNING}too large{prettier_print.ENDC} ({len(browser_payload)} chars) to print, saving to {prettier_print.OKGREEN}payload.txt{prettier_print.ENDC}\n\n')
             with open('payload.txt','w') as file:
                 file.write(browser_payload)
     except Exception as e:
