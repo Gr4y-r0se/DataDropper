@@ -12,7 +12,7 @@ DataDropper is a take on the classic HTML smuggling attack, that instead leverag
 python3 dataDropper.py example.txt
 ```
 
-Copy and paste the data into 
+Copy and paste the data into a browser, then click on 'Download'!
 
 ## Compatibility
 
